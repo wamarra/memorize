@@ -23,7 +23,7 @@ struct ContentView: View {
                     }
             }
         }
-        .font(Font.system(size: 30))
+        .font(viewModel.cards.count == 10 ? Font.system(size: 15) : Font.system(size: 30))
         .foregroundColor(Color.red)
     
     }
