@@ -2,7 +2,7 @@
 //  Array+Identifiable.swift
 //  Memorize
 //
-//  Created by Pedro Henrique on 29/07/21.
+//  Created by Wesley Marra on 06/08/21.
 //
 
 import Foundation
@@ -17,8 +17,6 @@ extension Array where Element: Identifiable {
             }
         }
         
-        
         return nil
     }
-    
 }
