@@ -29,6 +29,14 @@ class EmojiMemoryGame: ObservableObject {
         model.gameHasEnded
     }
     
+    var calculateScore: Int {
+        model.calculateScore
+    }
+    
+    var statistic: MemoryGame<String>.Statistic {
+        model.statistic
+    }
+    
     // MARK: - Processamento de Intenções
     
     func choose(card: MemoryGame<String>.Card) {

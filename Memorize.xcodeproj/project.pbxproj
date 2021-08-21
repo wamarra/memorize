@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B7D0CAB26D089E2001D6F17 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7D0CAA26D089E2001D6F17 /* Timer.swift */; };
 		1B890AF126BD6CD500A6B2C7 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B890AF026BD6CD500A6B2C7 /* EmojiMemoryGame.swift */; };
 		1B890AF326BD6D6800A6B2C7 /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B890AF226BD6D6800A6B2C7 /* Array+Identifiable.swift */; };
 		1B890AF526BD720F00A6B2C7 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B890AF426BD720F00A6B2C7 /* MemoryGame.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B7D0CAA26D089E2001D6F17 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		1B890AF026BD6CD500A6B2C7 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		1B890AF226BD6D6800A6B2C7 /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
 		1B890AF426BD720F00A6B2C7 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				1B890AFC26BD745B00A6B2C7 /* Array+OnlyOrNothing.swift */,
 				1B890AFE26BD81D500A6B2C7 /* Grid.swift */,
 				1B890B0026BD841500A6B2C7 /* GridLayout.swift */,
+				1B7D0CAA26D089E2001D6F17 /* Timer.swift */,
 			);
 			path = Memorize;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				1B890AF726BD72D100A6B2C7 /* CardMaker.swift in Sources */,
 				1B890AF926BD73AF00A6B2C7 /* ContentView.swift in Sources */,
 				1B890AFB26BD73EA00A6B2C7 /* MemorizeApp.swift in Sources */,
+				1B7D0CAB26D089E2001D6F17 /* Timer.swift in Sources */,
 				1B890AFF26BD81D500A6B2C7 /* Grid.swift in Sources */,
 				1B890AF326BD6D6800A6B2C7 /* Array+Identifiable.swift in Sources */,
 				1B890AF126BD6CD500A6B2C7 /* EmojiMemoryGame.swift in Sources */,
