@@ -12,6 +12,9 @@ struct ContentView: View {
     @ObservedObject
     var viewModel: EmojiMemoryGame
     
+    @State
+    var level: Double = -1;
+        
     var body: some View {
         
         VStack {
@@ -33,7 +36,7 @@ struct ContentView: View {
                         .font(.system(size: 12))
                     Text("Tempo total: \(viewModel.statistic.totalTime)s para solução")
                         .font(.system(size: 12))
-                    Text("Tempo gasto: \(viewModel.statistic.spendTime)s")
+                    Text("Tempo gasto de acordo com a dificuldade: \(viewModel.statistic.spendTime)s")
                         .font(.system(size: 12))
                     Text("Pontuação atingida: \(viewModel.statistic.score) pontos")
                         .font(.system(size: 12))
@@ -54,28 +57,68 @@ struct ContentView: View {
                     .clipShape(Capsule()).padding(30)
                 )
                
-                
                 Spacer()
+                
+                Button("Novo Jogo") {
+                    withAnimation(.easeInOut) {
+                        viewModel.newGame()
+                    }
+                    
+                    level = -1
+                }.padding()
+                .background(Color.purple)
+                .clipShape(Capsule())
+                .foregroundColor(Color.white)
+                .shadow(color: .gray, radius: 5, x: 2, y: 2)
             } else {
-                Grid(viewModel.cards) { card in
-                    CardView(card: card)
-                        .onTapGesture {
-                            withAnimation {
-                                viewModel.choose(card: card)
-                            }
-                        }
+                if (level < 0) {
+                    VStack {
+                        Text("Escolha a dificuldade")
+                            .font(.system(size: 30))
+                            .bold()
+                            .padding(20)
+                        
+                        Button("Fácil") {
+                            level = 0
+                        }.padding()
+                        .background(Color.purple)
+                        .clipShape(Capsule())
+                        .foregroundColor(Color.white)
+                        .shadow(color: .gray, radius: 5, x: 2, y: 2)
+                        
+                        Button("Normal") {
+                            level = 1
+                        }.padding()
+                        .background(Color.purple)
+                        .clipShape(Capsule())
+                        .foregroundColor(Color.white)
+                        .shadow(color: .gray, radius: 5, x: 2, y: 2)
+                        .frame(width: 100, height: 100, alignment: .center)
+                        
+                        Button("Difícil") {
+                            level = 2
+                        }.padding()
+                        .background(Color.purple)
+                        .clipShape(Capsule())
+                        .foregroundColor(Color.white)
+                        .shadow(color: .gray, radius: 5, x: 2, y: 2)
+                    }
                 }
-            }
-            
-            Button("Novo Jogo") {
-                withAnimation(.easeInOut) {
-                    viewModel.newGame()
+                
+                if (level >= 0) {
+                    Grid(viewModel.cards) { card in
+                        CardView(card: card)
+                            .onTapGesture {
+                                withAnimation {
+                                    viewModel.choose(card: card, difficulty: level)
+                                }
+                            }
+                    }
                 }
             }
         }
         .foregroundColor(Color.purple)
     }
-
 }
 
 struct CardView: View {

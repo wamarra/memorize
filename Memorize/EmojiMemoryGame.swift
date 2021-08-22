@@ -39,8 +39,8 @@ class EmojiMemoryGame: ObservableObject {
     
     // MARK: - Processamento de Intenções
     
-    func choose(card: MemoryGame<String>.Card) {
-        model.choose(card: card)
+    func choose(card: MemoryGame<String>.Card, difficulty: Double) {
+        model.choose(card: card, difficulty: difficulty)
     }
     
     func newGame() {

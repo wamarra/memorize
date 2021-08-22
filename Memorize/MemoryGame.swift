@@ -64,7 +64,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         cards.shuffle()
     }
     
-    mutating func choose(card: Card) {
+    mutating func choose(card: Card, difficulty: Double) {
         print("Carta escolhida: \(card)")
         
         if let chosenCardIndex = cards.firstIndex(matching: card) { //desencapsulamento de opcional
@@ -80,6 +80,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             }
             
             cards[chosenCardIndex].isFaceUp = true
+            cards[chosenCardIndex].difficulty = difficulty
         }
     }
     
