@@ -11,14 +11,15 @@ struct CardMaker: ViewModifier {
     
     var isFaceUp: Bool
     
-    let cornerRadius: CGFloat = 12
+    var cornerRadius: CGFloat
     let lineWidth: CGFloat = 4
     
     private var rotation: Double
     
-    init(isFaceUp: Bool) {
+    init(isFaceUp: Bool, cornerRadius: CGFloat) {
         self.isFaceUp = isFaceUp
         self.rotation = isFaceUp ? 0 : 180
+        self.cornerRadius = cornerRadius
     }
     
     func body(content: Content) -> some View {
@@ -42,7 +43,7 @@ struct CardMaker: ViewModifier {
 
 extension View {
     
-    func makeCard(isFaceUp: Bool = false) -> some View {
-        return self.modifier(CardMaker(isFaceUp: isFaceUp))
+    func makeCard(isFaceUp: Bool = false, cornerRadius: CGFloat) -> some View {
+        return self.modifier(CardMaker(isFaceUp: isFaceUp, cornerRadius: cornerRadius))
     }
 }

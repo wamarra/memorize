@@ -5,16 +5,24 @@
 //  Created by Wesley Marra on 06/08/21.
 //
 
-import Foundation
+import SwiftUI
 
 // ViewModel do MVVM
 class EmojiMemoryGame: ObservableObject {
     
-    @Published
-    var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
+    var theme: Theme<String>
     
-    static func createMemoryGame() -> MemoryGame<String>  {
-        let emojis = ["⚽️", "🥎", "🎱", "🏀", "🏈", "⚾️", "🏐", "🎾", "🏉"].shuffled()
+    @Published
+    var model: MemoryGame<String>
+    
+    init(theme: Theme<String>) {
+        self.theme = theme
+        self.model = EmojiMemoryGame.createMemoryGame(theme: theme)
+    }
+    
+    static func createMemoryGame(theme: Theme<String>) -> MemoryGame<String>  {
+//        let emojis = ["⚽️", "🥎", "🎱", "🏀", "🏈", "⚾️", "🏐", "🎾", "🏉"].shuffled()
+        let emojis = theme.cardFaceOptions.shuffled()
         return MemoryGame(numberOfPairsOfCards: Int.random(in: 2..<6)) { emojis[$0] }
     }
     
@@ -37,6 +45,14 @@ class EmojiMemoryGame: ObservableObject {
         model.statistic
     }
     
+    var themeColor: Color {
+        (theme.details["color"] as? Color) ?? Color.black
+    }
+    
+    var themeCornerRadius: CGFloat {
+        CGFloat(theme.details["cornerRadius"] as? Int ?? 8)
+    }
+    
     // MARK: - Processamento de Intenções
     
     func choose(card: MemoryGame<String>.Card, difficulty: Double) {
@@ -44,6 +60,6 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     func newGame() {
-        model = EmojiMemoryGame.createMemoryGame()
+        model = EmojiMemoryGame.createMemoryGame(theme: theme)
     }
 }
